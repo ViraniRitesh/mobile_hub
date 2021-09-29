@@ -4,7 +4,8 @@ class GalleryController < ApplicationController
   end
 
   def search
-    @mobiles = Product.find_by_sql ["SELECT * FROM products WHERE name like ? OR brand like ? OR colour like ? OR ram like ? OR storage like ? OR os like ?",params[:search],params[:search],params[:search],params[:search],params[:search],params[:search]]
+    keyword = "%" + params[:search].to_s + "%"
+    @mobiles = Product.find_by_sql ["SELECT * FROM products WHERE name like ? OR brand like ? OR colour like ? OR ram like ? OR storage like ? OR os like ?",keyword,keyword,keyword,keyword,keyword,keyword]
   end
 
   def checkout
