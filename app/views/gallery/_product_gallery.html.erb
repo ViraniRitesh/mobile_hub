@@ -1,0 +1,29 @@
+  <div class="maincontent-area">
+        
+        <div class="row">    
+ 						
+							<table>
+								<tr>
+								<% count =0 %>
+								<% @mobiles.each do |mobile| %>
+									<% if (count % 4)==0 %>
+										</tr>
+										<tr>
+									<% end %>
+									<% count+=1 %>
+									<div class="col-md-3 col-sm-6">
+										<td><%if mobile.mobile_image.attached? %>
+												<%= image_tag mobile.mobile_image %><br>
+											<% end %>
+											Model: <%= mobile.name %><br>
+											Colour: <%= mobile.colour %><br>
+											Storage: <%= mobile.storage %><br>
+											Price: <%= mobile.price %><br>
+											<%= button_to 'Add to Cart', line_items_path(:product_id=> mobile.id) %>
+										</td>
+									</div>
+								<% end %>
+								</tr>
+							</table>	
+						</div></div>
+						 

@@ -1,0 +1,26 @@
+<% unless cart.line_items.empty? %>
+<h2>My Cart</h2>
+<table class="table text-light">
+	<tr class="text-warning">
+		<th scope="col">Name</th>
+		<th scope="col">Quantity</th>
+		<th scope="col">Cost</th>
+		<th scope="col">Price</th>
+	</tr>
+	<%= render(cart.line_items) %>
+	<tr class="total-font">
+		<td colspan="3">Total</td>
+		<td class="total_cell"><%= number_to_indian_currency(cart.total_price.to_i)  %></td>
+	</tr>
+</table>
+<% session[:amount]=cart.total_price.to_i %>
+<%= button_to 'Empty Cart', cart, :method => :delete, :confirm => 'Are you sure?' %>
+<p>
+	<%= link_to "Continue Shopping",:controller=>"gallery",:action=>"index" %> | 
+	<% if user_signed_in? %>
+		<%= link_to "Checkout" , gallery_checkout_path %>
+	<% else %>
+		<%= link_to "Checkout", new_user_session_path %>
+	<% end %>
+</p>
+<% end %>

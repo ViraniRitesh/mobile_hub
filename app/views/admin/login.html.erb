@@ -1,0 +1,21 @@
+<h2>Admin Login</h2>
+
+
+
+<%= form_with do |form| %>
+  
+   <div class="field">
+	   	<%= form.label :user, "User ID" %>
+	    <%= form.text_field :user %>
+   </div>
+    
+   <div class="field">
+	   	<%= form.label :password, "Password" %>
+	    <%= form.password_field :password %>
+   </div>
+    
+    <div class="actions">
+    	<%= form.submit "Login" %>
+    </div>
+    
+<% end %>

@@ -1,0 +1,23 @@
+<h2><strong>Hello</strong></h2> <%= @email %>
+
+<h1>Your Order has been Placed!!</h1><br>
+<h2>Here are the details:</h2>
+			  
+<% @cart.line_items.each do |item|%>
+	<strong>Product Name:</strong> <%= item.product.name%><br>
+	<strong>Product Quantity:</strong> <%= item.quantity%><br>
+	<strong>Product Price:</strong> ₹<%= item.product.price%><br><br>		  
+<% end %>
+
+Transaction Amount: ₹<%= @amount %><br><br><br><br>
+
+Thanks<br>
+Postman
+
+
+
+
+
+
+  
+
