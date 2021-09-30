@@ -24,8 +24,7 @@ class GalleryController < ApplicationController
 		  if credit_card.valid?
 	  		gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
 	    	:login    => 'TestMerchant',
-	    	:password => 'password',
-        :test =>'true'
+	    	:password => 'password'
 	  		)
 	  		response = gateway.authorize(amount, credit_card)
 	  		if response.success?
