@@ -10,7 +10,7 @@ class GalleryController < ApplicationController
 
   def checkout
   	if request.post?
-      @user=User.find_by(session[:user])
+      
   		ActiveMerchant::Billing::Base.mode = :test
 		  credit_card = ActiveMerchant::Billing::CreditCard.new(
   		:number     => params[:number],
@@ -29,7 +29,7 @@ class GalleryController < ApplicationController
 	  		)
 	  		response = gateway.authorize(amount, credit_card)
 	  		if response.success?
-          PostmanMailer.purchase_complete(@user,amount,current_cart).deliver
+          PostmanMailer.purchase_complete(current_user,amount,current_cart).deliver
     			gateway.capture(amount, response.authorization)
     			session[:cart_id]= nil
           redirect_to :action=>:success
