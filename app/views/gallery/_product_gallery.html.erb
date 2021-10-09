@@ -12,14 +12,18 @@
 									<% end %>
 									<% count+=1 %>
 									<div class="col-md-3 col-sm-6">
-										<td><%if mobile.mobile_image.attached? %>
+										<td><div class="img">
+											<%if mobile.mobile_image.attached? %>
 												<%= image_tag mobile.mobile_image %><br>
 											<% end %>
-											Model: <%= mobile.name %><br>
-											Colour: <%= mobile.colour %><br>
-											Storage: <%= mobile.storage %><br>
-											Price: <%= mobile.price %><br>
-											<%= button_to 'Add to Cart', line_items_path(:product_id=> mobile.id) %>
+											<div class="img_area">
+												Model: <%= mobile.name %><br>
+												Colour: <%= mobile.colour %><br>
+												Storage: <%= mobile.storage %><br>
+												Price: <%= mobile.price %><br>
+												<%= button_to 'Add to Cart', line_items_path(:product_id=> mobile.id) %>
+											</div>
+										</div>
 										</td>
 									</div>
 								<% end %>
